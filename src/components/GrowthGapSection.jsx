@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { 
-  Target, Palette, BarChart3, ChevronRight, Zap, 
-  TrendingUp, Shield, Sparkles, ArrowRight
+  Target, Palette, BarChart3, ArrowRight, Zap, 
+  TrendingUp, Shield, Sparkles, Circle, ChevronRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 export default function CombinedSection() {
   const [activeProblem, setActiveProblem] = useState(0);
@@ -14,308 +15,282 @@ export default function CombinedSection() {
       title: "Budget Drain",
       description: "Creative spending without ROI tracking",
       icon: <Zap className="w-5 h-5" />,
-      color: "from-orange-500 to-amber-500",
-      stat: "73% of brands"
+      color: "text-orange-500",
+      bg: "bg-orange-50",
+      border: "border-orange-200",
+      stat: "73%"
     },
     {
       id: 2,
       title: "CLTV Erosion",
       description: "Customer lifetime value declining",
       icon: <TrendingUp className="w-5 h-5" />,
-      color: "from-blue-500 to-cyan-500",
-      stat: "42% of companies"
+      color: "text-blue-500",
+      bg: "bg-blue-50",
+      border: "border-blue-200",
+      stat: "42%"
     },
     {
       id: 3,
       title: "Data Blindspot",
       description: "Drowning in data, lacking insights",
       icon: <Shield className="w-5 h-5" />,
-      color: "from-purple-500 to-pink-500",
-      stat: "65% of marketers"
+      color: "text-purple-500",
+      bg: "bg-purple-50",
+      border: "border-purple-200",
+      stat: "65%"
     }
   ];
 
   const pillars = [
     {
       id: 1,
-      icon: <Target className="w-8 h-8" />,
+      icon: <Target className="w-6 h-6" />,
       title: "Strategy",
-      subtitle: "The Blueprint",
       description: "Data-driven positioning and market intelligence",
-      color: "from-blue-600 to-cyan-500",
-      features: ["Market Analysis", "Brand Positioning", "Planning"]
+      color: "text-blue-600",
+      bg: "bg-blue-100",
+      border: "border-blue-200"
     },
     {
       id: 2,
-      icon: <Palette className="w-8 h-8" />,
+      icon: <Palette className="w-6 h-6" />,
       title: "Creative",
-      subtitle: "The Execution",
       description: "High-impact solutions that resonate",
-      color: "from-purple-600 to-pink-500",
-      features: ["Visual Identity", "Content", "Campaigns"]
+      color: "text-purple-600",
+      bg: "bg-purple-100",
+      border: "border-purple-200"
     },
     {
       id: 3,
-      icon: <BarChart3 className="w-8 h-8" />,
+      icon: <BarChart3 className="w-6 h-6" />,
       title: "Analytics",
-      subtitle: "The Results",
       description: "Real-time tracking for measurable outcomes",
-      color: "from-green-600 to-emerald-500",
-      features: ["ROI Tracking", "Performance", "Optimization"]
+      color: "text-emerald-600",
+      bg: "bg-emerald-100",
+      border: "border-emerald-200"
     }
   ];
 
-  return (
-    <div className="w-full bg-white relative overflow-hidden">
-      {/* Minimal Background */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-purple-50 to-pink-50 rounded-full blur-3xl opacity-30"></div>
-      
-      {/* Floating Dots */}
-      {[...Array(3)].map((_, i) => (
-        <motion.div
-          key={i}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 3 + i, repeat: Infinity }}
-          className={`absolute w-2 h-2 rounded-full ${
-            i === 0 ? 'bg-blue-300 top-20 left-10' : 
-            i === 1 ? 'bg-purple-300 top-40 right-20' : 
-            'bg-cyan-300 bottom-20 left-20'
-          }`}
-        />
-      ))}
+  const successStats = [
+    "3.5x Average ROI", "98% Client Satisfaction", "500+ Brands Transformed", 
+    "250M+ Audience Reach", "24/7 Support", "Award Winning", 
+    "Data-Driven Results", "360° Strategy", "AI-Powered Insights"
+  ];
 
-      {/* Compact Combined Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+  return (
+    <div className="w-full bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         
-        {/* Header - Compact */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring" }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 rounded-full text-sm font-medium mb-4 border border-blue-100"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 rounded-full text-sm font-medium mb-6"
           >
             <Sparkles className="w-4 h-4" />
             Growth Transformation
           </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Bridge Your
-        
+            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Growth Gap
-            
+            </span>
           </h1>
           
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Transform marketing challenges into strategic advantages with our integrated framework.
           </p>
         </motion.div>
 
-        {/* Problems - Compact Cards */}
-        <div className="mb-16 lg:mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+        {/* Marquee Stats Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-2">
+            <Marquee 
+              speed={40} 
+              gradient={false}
+              className="py-4"
+            >
+              <div className="flex items-center gap-8 px-8">
+                {successStats.map((stat, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className={`w-2 h-2 rounded-full ${index % 3 === 0 ? 'bg-blue-500' : index % 3 === 1 ? 'bg-purple-500' : 'bg-pink-500'}`} />
+                    <span className="text-gray-700 font-medium whitespace-nowrap">{stat}</span>
+                  </div>
+                ))}
+              </div>
+            </Marquee>
+          </div>
+        </motion.div>
+
+        {/* Problems - Minimal Design */}
+        <div className="mb-20">
+          <div className="flex justify-center mb-12">
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+              <div className="text-sm text-gray-500 font-medium">COMMON GROWTH CHALLENGES</div>
+              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {problems.map((problem, index) => (
               <motion.div
                 key={problem.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 * index }}
-                whileHover={{ y: -4 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
                 onClick={() => setActiveProblem(index)}
-                className={`relative cursor-pointer ${
-                  activeProblem === index ? 'lg:scale-[1.02]' : ''
-                }`}
+                className="group cursor-pointer"
               >
-                {/* Card */}
-                <div className={`bg-white rounded-2xl p-6 border-2 transition-all duration-300 ${
-                  activeProblem === index 
-                    ? 'border-blue-500 shadow-lg' 
-                    : 'border-gray-100 hover:border-blue-200'
-                }`}>
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${problem.color} p-3 flex items-center justify-center`}>
-                      <div className="text-white">{problem.icon}</div>
+                {/* Content Container */}
+                <div className={`relative ${problem.bg} rounded-2xl p-6 border ${problem.border} transition-all duration-300 ${activeProblem === index ? 'ring-2 ring-blue-500' : ''}`}>
+                  
+                  {/* Icon and Number */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`p-3 rounded-lg ${problem.bg} ${problem.color}`}>
+                      {problem.icon}
                     </div>
-                    <div className="text-2xl font-bold text-gray-200">0{problem.id}</div>
+                    <div className="text-3xl font-bold text-gray-200">0{problem.id}</div>
                   </div>
 
-                  {/* Content */}
+                  {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {problem.title}
                   </h3>
                   
-                  <p className="text-gray-600 text-sm mb-3">
+                  {/* Description */}
+                  <p className="text-gray-600 mb-4">
                     {problem.description}
                   </p>
 
                   {/* Stat */}
-                  <div className="text-lg font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-gray-900">
                     {problem.stat}
                   </div>
 
-                  {/* Active Indicator */}
-                  {activeProblem === index && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                    />
-                  )}
+                  {/* Hover Arrow */}
+                  <div className="mt-4 flex items-center gap-2 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-sm font-medium">Learn solution</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Solution Framework - Compact */}
+        {/* Solution Framework */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-              The <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Samanvay</span> Solution
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              The <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Samanvay</span> Framework
             </h2>
             <p className="text-gray-600">
               Three integrated pillars for seamless growth
             </p>
           </div>
 
-          {/* Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-            {pillars.map((pillar, index) => (
-              <motion.div
-                key={pillar.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group"
-              >
-                {/* Pillar Card */}
-                <div className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-200 transition-all duration-300 h-full">
-                  {/* Header */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${pillar.color} p-3 flex items-center justify-center`}>
-                      <div className="text-white">{pillar.icon}</div>
-                    </div>
-                    <div className="text-4xl font-bold text-gray-200">
-                      {pillar.id}
-                    </div>
-                  </div>
+          {/* Pillars - Vertical Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-emerald-200 hidden md:block"></div>
+            
+            {/* Pillars */}
+            <div className="space-y-8">
+              {pillars.map((pillar, index) => (
+                <motion.div
+                  key={pillar.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative group"
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 md:left-6 top-6 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full -translate-x-1/2 z-10 hidden md:block"></div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {pillar.title}
-                  </h3>
-                  
-                  {/* Subtitle */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 rounded-full text-sm font-medium mb-3">
-                    {pillar.subtitle}
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-4">
-                    {pillar.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="space-y-2">
-                    {pillar.features.map((feature, fIndex) => (
-                      <motion.div
-                        key={fIndex}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + fIndex * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-gray-700"
-                      >
-                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-                        {feature}
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <button className="mt-6 flex items-center gap-2 text-blue-600 font-medium text-sm group/btn">
-                    Learn more
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Flow Visualization */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-12 lg:mt-16"
-        >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 lg:p-8 border border-blue-100">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Continuous Growth Cycle</h3>
-                <p className="text-gray-600 text-sm">
-                  Strategic insights inform execution, which drives performance, refining strategy.
-                </p>
-              </div>
-              
-              {/* Flow Icons */}
-              <div className="flex items-center gap-4">
-                {pillars.map((pillar, index) => (
-                  <div key={pillar.id} className="flex items-center">
-                    <div className="text-center">
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${pillar.color} flex items-center justify-center mb-2`}>
-                        <div className="text-white font-bold text-xs">
-                          {pillar.id}
+                  {/* Content */}
+                  <div className="ml-0 md:ml-12">
+                    <div className="flex items-start gap-6">
+                      {/* Number */}
+                      <div className="flex-shrink-0">
+                        <div className={`w-12 h-12 rounded-xl ${pillar.bg} border ${pillar.border} flex items-center justify-center ${pillar.color}`}>
+                          <div className="font-bold text-lg">{pillar.id}</div>
                         </div>
                       </div>
-                      <div className="text-xs font-medium text-gray-700">
-                        {pillar.title}
+
+                      {/* Content */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className={`p-2 rounded-lg ${pillar.bg} ${pillar.color}`}>
+                            {pillar.icon}
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900">
+                            {pillar.title}
+                          </h3>
+                        </div>
+                        
+                        <p className="text-gray-600 mb-4">
+                          {pillar.description}
+                        </p>
+                        
+                        {/* Features */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {["Market Intelligence", "Creative Solutions", "Performance Tracking"].map((item, i) => (
+                            <span key={i} className="px-3 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+
+                        <button className="flex items-center gap-2 text-blue-600 font-medium group/btn">
+                          Explore pillar
+                          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </button>
                       </div>
                     </div>
-                    {index < pillars.length - 1 && (
-                      <div className="w-6 h-px bg-gradient-to-r from-blue-400 to-purple-400"></div>
-                    )}
                   </div>
-                ))}
-                <div className="ml-4 px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-medium rounded-lg">
-                  ↻ Loop
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>
+
+      
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-12 lg:mt-16"
+          className="text-center"
         >
-          <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
-            Start Your Transformation
+          <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+            <span>Start Your Transformation</span>
+            <ArrowRight className="w-5 h-5" />
           </button>
-          <p className="text-gray-500 text-sm mt-3">
+          <p className="text-gray-500 text-sm mt-4">
             Get a free growth gap analysis with your first consultation
           </p>
         </motion.div>
