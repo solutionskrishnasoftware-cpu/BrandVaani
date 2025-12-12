@@ -105,7 +105,7 @@ const HeroSection = () => {
                     </h1>
 
                     {/* Subtitle - Mobile Responsive */}
-                    <h2 className="text-sm sm:text-base md:text-xl lg:text-2xl text-white font-normal mb-3 sm:mb-4 md:mb-6 opacity-95 tracking-wide max-w-full sm:max-w-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    <h2 className="text-sm sm:text-base md:text-xl lg:text-2xl font-normal mb-3 sm:mb-4 md:mb-6 opacity-95 tracking-wide max-w-full sm:max-w-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                       {slide.subtitle}
                     </h2>
 

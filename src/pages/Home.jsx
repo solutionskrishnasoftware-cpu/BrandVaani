@@ -6,15 +6,17 @@ import Testimonials from '../components/Testimonials';
 import Faqs from '../components/Faqs';
 import HeroSection from '../components/HeroSection';
 import GrowthGapSection from '../components/GrowthGapSection';
+import BrandBalanceSection from '../components/BrandBalanceSection';
 
 const Home = () => {
   return (
     <div>
       <HeroSection/>
+      <BrandBalanceSection/>
       <GrowthGapSection/>
       {/* <ServicesSection/> */}
-      <FeaturedProjects/>
-      <WhyChooseUs/>
+      {/* <FeaturedProjects/>
+      <WhyChooseUs/> */}
       <Testimonials/>
       <Faqs/>
     </div>

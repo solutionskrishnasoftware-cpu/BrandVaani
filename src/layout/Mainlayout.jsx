@@ -1,21 +1,24 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 const Mainlayout = () => {
   return (
-    <div>
-      <header className="">
+    <div className="relative overflow-visible">
+      
+      {/* Navbar */}
+      <header className="relative overflow-visible z-[999]">
         <Navbar />
       </header>
 
       {/* Main Content */}
-      <main className="">
-        <Outlet /> {/* Nested routes render here */}
+      <main className="relative z-[1] overflow-visible">
+        <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="">
+      <footer className="relative overflow-visible">
         <Footer />
       </footer>
     </div>
